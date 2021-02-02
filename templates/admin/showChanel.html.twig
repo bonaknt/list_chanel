@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Consultation{% endblock %}
+
+{% block body %}
+<div id="form" class="ml-3">
+    <a href="{{ chanel.url }}"><h2>{{ chanel.name }} </h2></a>
+
+    <p class="h5"> {{ chanel.description|nl2br }}</p>
+
+    <img class="chanel-img" src="{{ asset(uploaded_asset(chanel.imagePath)) }}">
+</div>
+
+
+{% endblock %}

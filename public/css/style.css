@@ -1,0 +1,44 @@
+body {
+    background-color: #e3e3e3 !important;
+}
+
+h2 {
+    font-family: cursive;
+}
+
+header {
+  min-height: 15rem;
+}
+.section {
+      background-color: #9df;
+}
+
+header > div > h1 {
+  color: white;
+  font-family:Lucida Console;
+}
+
+#titleList {
+  height: 10rem;
+}
+
+div.blockList {
+  background-color: white;
+}
+
+table.table {
+    background-color: white;
+}
+
+div.form {
+    background-color: #eae6e6;
+}
+
+textarea.form-control, input.form-control{
+    padding: 2px;
+}
+
+p {
+    font-size: 1.3rem;
+    font-family:Lucida Console;
+}

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Modification{% endblock %}
+
+{% block body %}
+<div id="form" class="ml-3">
+    {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-7">
+                {{ form_label(form.name, null, { 'label_attr': {'class': 'col-form-label'}, 
+                    'label': 'Nom de la chaine'  }) }}
+                {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+
+                <small>{{ form_help(form.name) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.name) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7" id="description">
+                {{ form_label(form.description, null, { 'label_attr': {'class': 'col-form-label'},
+                    'label': 'Description de la chaine' }) }}
+                {{ form_widget(form.description, { 'attr': {'class': 'form-control', 'rows': 3} }) }}
+
+                <small>{{ form_help(form.description) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.description) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-7" id="url">
+                    {{ form_label(form.url, null, { 'label_attr': {'class': 'col-form-label'},
+                        'label': 'Lien de la chaine' }) }}
+                    {{ form_widget(form.url, { 'attr': {'class': 'form-control'} }) }}
+
+                    <small>{{ form_help(form.url) }}</small>
+
+                    <div class="form-error">
+                        {{ form_errors(form.url) }}
+                    </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-7" id="imageFile">
+                {{ form_label(form.imageFile, null, { 'label_attr': {'class': 'col-form-label'},
+                    'label': 'Image de la chaine' }) }}
+                {{ form_widget(form.imageFile, { 'attr': {'class': 'form-control', 'placeholder': 'Selectionner une image'} }) }}
+
+                <small>{{ form_help(form.imageFile) }}</small>
+
+                <div class="form-error">
+                    {{ form_errors(form.imageFile) }}
+                </div>
+            </div>
+
+            <div class="col-3">
+                {% if form.vars.data.imageFilename|default %}
+                    <img src="{{ asset(uploaded_asset(form.vars.data.imagePath)) }}" height="100">
+                {% endif %}
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-3" type="submit">
+            Enregistrer
+        </button>
+    {{ form_end(form) }}
+</div>
+
+
+{% endblock %}

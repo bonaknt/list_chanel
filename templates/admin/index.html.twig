@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+<div class="container section-admin">
+    <div class="row mt-5">
+        <div class="col-12">
+            <a class="btn btn-primary" href="{{ path('admin_create_chanel') }}" role="button">Ajouter une chaine</a>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom de la chaine</th>
+                        <th scope="col">Description</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for chanel in listChanel %}
+                    <tr>
+                        <th scope="row">{{ chanel.id }}</th>
+                        <td>{{ chanel.name }}</td>
+                        <td>{{ chanel.description | slice(0, 100) }} ... </td>
+                        <td>
+                            <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Actions
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ path('admin_show_chanel', {id: chanel.id}) }}">Afficher</a>
+                                <a class="dropdown-item" href="{{ path('admin_edit_chanel', {id: chanel.id}) }}">Modifier</a>
+                                <a class="dropdown-item deleteBtn" href="#" data-remove-url="{{url('admin_delete_chanel',{id:chanel.id}) }}">Supprimer</a>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmationModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4>Suppression</h4>
+                <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btnNo" data-dismiss="modal">
+                    <i class="fa fa-ban" aria-hidden="true"></i> Annuler
+                </button>
+                <a href="#" class="btn w-sm btn-danger remove_item">Supprimer</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
