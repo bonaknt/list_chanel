@@ -14,6 +14,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 class AdminController extends AbstractController
 {
